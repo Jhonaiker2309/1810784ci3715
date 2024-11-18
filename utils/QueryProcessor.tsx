@@ -29,6 +29,13 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("minus")) {
+    const numbers = query.match(/\d+/g)?.map(Number);
+    if (numbers && numbers.length === 2) {
+      return (numbers[0] - numbers[1]).toString();
+    }
+  }  
+
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     const numbers = query.match(/\d+/g)?.map(Number);
     if (numbers && numbers.length === 2) {
