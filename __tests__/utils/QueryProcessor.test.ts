@@ -53,9 +53,16 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("87");
     });
-    test('should return the miltiplication of another two numbers', () => {
-        const query = "What is 39 multiplied by 100?";
+
+    test('should return the product of two numbers', () => {
+        const query = "What is 96 multiplied by 82?";
         const response: string = QueryProcessor(query);
-        expect(response).toBe("3900");
-    });    
+        expect(response).toBe("7872");
+    });
+
+    test('should return numbers that are both squares and cubes', () => {
+        const query = "Which of the following numbers is both a square and a cube: 729, 1958, 1244, 783, 4587, 289, 4096?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("729, 4096");
+    });
 });
