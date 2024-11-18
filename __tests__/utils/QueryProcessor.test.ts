@@ -18,21 +18,39 @@ describe("QueryProcessor", () => {
           ));
     });
 
-    // TODO: Deberías actualizar la prueba a continuación después de añadir tu USB ID
     test('should return my USB ID', () => {
         const query = "what's your USB ID?";
         const response: string = QueryProcessor(query);
-        expect(response).toBe((
-		"18-10784"
-    	));
+        expect(response).toBe("18-10784");
     });
 
-    // TODO: Deberías actualizar la prueba a continuación después de añadir tu USB ID
     test('should return my name', () => {
         const query = "what's your name?";
         const response: string = QueryProcessor(query);
-        expect(response).toBe((
-		"Jhonaiker"
-    	));
-    });    
+        expect(response).toBe("Jhonaiker");
+    });
+
+    test('should return the largest number', () => {
+        const query = "Which of the following numbers is the largest: 68, 65, 71?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("71");
+    });
+
+    test('should return the sum of two numbers', () => {
+        const query = "What is 65 plus 28?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("93");
+    });
+
+    test('should return the largest number in another set', () => {
+        const query = "Which of the following numbers is the largest: 56, 92, 57?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("92");
+    });
+
+    test('should return the sum of another two numbers', () => {
+        const query = "What is 72 plus 15?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("87");
+    });
 });

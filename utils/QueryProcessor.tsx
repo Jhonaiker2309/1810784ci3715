@@ -1,22 +1,56 @@
-export default function QueryProcessor(query: string): string {
-  if (query.toLowerCase().includes("shakespeare")) {
-    return (
-      "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
-      "English poet, playwright, and actor, widely regarded as the greatest " +
-      "writer in the English language and the world's pre-eminent dramatist."
-    );
-  }
+import QueryProcessor from "../../utils/QueryProcessor";
+import '@testing-library/jest-dom'
 
-  if (query.toLowerCase().includes("usb id")) {
-    // TODO añade tu USB ID a continuación
-    // TODO actualiza el caso de prueba correspondiente en __tests__
-    return ( "18-10784" );
-  }
+describe("QueryProcessor", () => {
+    test("should return a string", () => {
+        const query = "test";
+        const response: string = QueryProcessor(query);
+        expect(typeof response).toBe("string");
+    });
 
-  if (query.toLowerCase().includes("name")) {
-    // TODO añade tu USB ID a continuación
-    // TODO actualiza el caso de prueba correspondiente en __tests__
-    return ( "Jhonaiker" );
-  }  
-  return "";
-}
+    test('should return shakespeare description', () => {
+        const query = "shakespeare";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
+            "English poet, playwright, and actor, widely regarded as the greatest " +
+            "writer in the English language and the world's pre-eminent dramatist."
+          ));
+    });
+
+    test('should return my USB ID', () => {
+        const query = "what's your USB ID?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("18-10784");
+    });
+
+    test('should return my name', () => {
+        const query = "what's your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("Jhonaiker");
+    });
+
+    test('should return the largest number', () => {
+        const query = "Which of the following numbers is the largest: 68, 65, 71?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("71");
+    });
+
+    test('should return the sum of two numbers', () => {
+        const query = "What is 65 plus 28?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("93");
+    });
+
+    test('should return the largest number in another set', () => {
+        const query = "Which of the following numbers is the largest: 56, 92, 57?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("92");
+    });
+
+    test('should return the sum of another two numbers', () => {
+        const query = "What is 72 plus 15?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("87");
+    });
+});
