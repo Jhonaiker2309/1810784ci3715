@@ -26,4 +26,13 @@ describe("QueryProcessor", () => {
 		"18-10784"
     	));
     });
+
+    // TODO: Deberías actualizar la prueba a continuación después de añadir tu USB ID
+    test('should return my name', () => {
+        const query = "what's your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+		"Jhonaiker"
+    	));
+    });    
 });
