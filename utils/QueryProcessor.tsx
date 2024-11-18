@@ -8,16 +8,12 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("usb id")) {
-    // TODO añade tu USB ID a continuación
-    // TODO actualiza el caso de prueba correspondiente en __tests__
-    return ( "18-10784" );
+    return "18-10784";
   }
 
   if (query.toLowerCase().includes("name")) {
-    // TODO añade tu USB ID a continuación
-    // TODO actualiza el caso de prueba correspondiente en __tests__
-    return ( "Jhonaiker" );
-  }  
+    return "Jhonaiker";
+  }
 
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     const numbers = query.match(/\d+/g)?.map(Number);
@@ -31,7 +27,8 @@ export default function QueryProcessor(query: string): string {
     if (numbers && numbers.length === 2) {
       return (numbers[0] + numbers[1]).toString();
     }
-  }  
+  }
+
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     const numbers = query.match(/\d+/g)?.map(Number);
     if (numbers && numbers.length === 2) {
@@ -48,6 +45,22 @@ export default function QueryProcessor(query: string): string {
       });
       return result.join(", ");
     }
-  }    
+  }
+
+  if (query.toLowerCase().includes("which of the following numbers are primes")) {
+    const numbers = query.match(/\d+/g)?.map(Number);
+    if (numbers) {
+      const isPrime = (num: number) => {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      };
+      const primes = numbers.filter(isPrime);
+      return primes.join(", ");
+    }
+  }
+
   return "";
 }

@@ -65,4 +65,22 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("729, 4096");
     });
+
+    test('should return numbers that are both squares and cubes in another set', () => {
+        const query = "Which of the following numbers is both a square and a cube: 2401, 4003, 53, 3121, 64, 4948, 4913?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("64");
+    });
+
+    test('should return numbers that are both squares and cubes in a new set', () => {
+        const query = "Which of the following numbers is both a square and a cube: 121, 729, 3441, 157, 588, 64, 3179?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("729, 64");
+    });
+
+    test('should return prime numbers from a set', () => {
+        const query = "Which of the following numbers are primes: 42, 89, 5, 72, 13?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("89, 5, 13");
+    });
 });
