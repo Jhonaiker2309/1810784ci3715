@@ -53,4 +53,9 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("87");
     });
+    test('should return the miltiplication of another two numbers', () => {
+        const query = "What is 39 multiplied by 100?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("3900");
+    });    
 });
